@@ -38,7 +38,7 @@ function calcular() {
     Math.trunc(salario12),
     Math.trunc(salario14)
   );
-  
+
   if (ress >= 1.32) {
     alert(ress - resultados[0]);
   } else if (ress >= 1.32 || ress <= 2.571) {
@@ -50,4 +50,3 @@ function calcular() {
   }
 }
 // aticoes de teste
- 

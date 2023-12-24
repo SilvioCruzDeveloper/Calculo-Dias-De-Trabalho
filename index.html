@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form>
+      <label for="faltas">Faltas:</label>
+      <input type="number" name="faltas" id="idfaltas" />
+
+      <label for="salarioInformado">Salário Bruto:</label>
+      <input type="number" id="salarioInformado" />
+
+      <label for="date1">Data de início da folha de pagamento:</label>
+      <input type="date" name="date1" id="date1" />
+
+      <label for="date2">Data de término da folha de pagamento:</label>
+      <input type="date" name="date2" id="date2" />
+
+      <input type="button" value="Calcular" onclick="calcular()"/>
+    </form>
+
+    <script src="calc.js"></script>
+  </body>
+</html>

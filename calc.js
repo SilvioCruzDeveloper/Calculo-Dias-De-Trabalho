@@ -1,32 +1,23 @@
-// Função para calcular ress e faltas
 function calcular() {
-  // Obter valores dos inputs
-  var faltasInput = document.getElementById("idfaltas").value; // Captura o número de faltas do input
-  var salarioInformado = document.getElementById("salarioInformado").value; // Captura o salário informado do input
-  var date1 = new Date(document.getElementById("date1").value); // Captura a data inicial do input
-  var date2 = new Date(document.getElementById("date2").value); // Captura a data final do input
+  var faltasInput = document.getElementById("idfaltas").value;
+  var salarioInformado = document.getElementById("salarioInformado").value;
+  var date1 = new Date(document.getElementById("date1").value);
+  var date2 = new Date(document.getElementById("date2").value);
 
-  // Converter datas para diferença em dias
-  var diferenca = Math.abs(date1 - date2); // Calcula a diferença em milissegundos entre as datas
-  var dia = 1000 * 60 * 60 * 24; // Define a quantidade de milissegundos em um dia
-  var total = Math.round(diferenca / dia); // Calcula o total de dias entre as datas
+  var diferenca = Math.abs(date1 - date2);
+  var dia = 1000 * 60 * 60 * 24;
+  var total = Math.round(diferenca / dia);
+  5;
 
-  // Calcular variáveis
-  var varTrabalhoDia = Math.round(salarioInformado / 30); // Calcula o valor do trabalho por dia, assumindo 30 dias no mês
-  var ress = total * varTrabalhoDia; // Calcula o ress multiplicando o total de dias pelo valor do trabalho por dia
+  var varTrabalhoDia = Math.round(salarioInformado / 30);
+  var ress = total * varTrabalhoDia;
 
-  // Converter ress e faltas para números inteiros
-  var ressInteiro = parseInt(ress); // Converte o ress para um número inteiro
-  var faltasInteiro = parseInt(faltasInput); // Converte o número de faltas para um número inteiro
-  var valorFalta = faltasInteiro * varTrabalhoDia; // Calcula o valor das faltas multiplicando o número de faltas pelo valor do trabalho por dia
-  var ress = ressInteiro - valorFalta; // Calcula o ress final subtraindo o valor das faltas do ress
+  var ressInteiro = parseInt(ress);
+  var faltasInteiro = parseInt(faltasInput);
+  var valorFalta = faltasInteiro * varTrabalhoDia;
+  var ress = ressInteiro - valorFalta;
 
-  // Exibir o resultado no console para depuração
   console.log("Ress Final:", ress);
-
-  // Alerta temporário para verificar o resultado (substituir por lógica para exibição no HTML)
-  alert("Ress Final: R$ " + ress);
-  // calcula os valores descontados
   var salario7 = ress * 0.075;
   var salario9 = ress * 0.09;
   var salario12 = ress * 0.12;
@@ -49,4 +40,3 @@ function calcular() {
     alert(ress - resultados[3]);
   }
 }
-// aticoes de teste

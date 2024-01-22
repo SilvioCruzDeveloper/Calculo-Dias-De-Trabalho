@@ -1,50 +1,82 @@
-/*o css dever ser otimizado para o melhor desempenho e uso em dispositivos móveis*/
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2; /* Cinza claro */
+  transition: all 0.3s ease;
+}
 
-  }
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #ffffff; /* Branco */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
 
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 300px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333; /* Preto */
+}
 
-  }
+input {
+  padding: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
 
-  label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #252525;
-    
-  }
+#btn {
+  background-color: #3498db; /* Azul */
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
 
-  input {
-    padding: 8px;
-    margin-bottom: 10px;
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
+#btn:hover {
+  background-color: #2980b9; /* Azul mais escuro */
+}
 
-  #btn {
-    background-color: #4caf50;
-    color: white;
-    cursor: pointer;
-  }
+form:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
 
-  #di1 {
-    margin-top: 20px;
-  }
+input:focus {
+  border: 1px solid #3498db;
+}
+
+label.required::after {
+  content: "*";
+  color: #e74c3c; /* Vermelho escuro */
+  margin-left: 4px;
+}
+
+/* Ajustes gerais para melhor aparência e espaçamento */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+form {
+  margin-top: 20px;
+}
+
+#di1 {
+  margin-top: 20px;
+}

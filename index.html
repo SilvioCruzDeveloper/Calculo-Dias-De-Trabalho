@@ -4,25 +4,138 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      textarea {
+        width: 100%;
+        height: 80px;
+        margin-bottom: 10px;
+      }
+
+      button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .card {
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .card:hover {
+        background-color: #f4f4f4;
+      }
+    </style>
   </head>
   <body>
-    <script src="calc.js"></script>
-    <form>
-      <label for="faltas">Faltas:</label>
-      <input type="number" name="faltas" id="idfaltas" />
+    <div class="container">
+      <form id="textForm">
+        <textarea id="textInput" placeholder="Digite seu texto aqui"></textarea>
+        <button type="button" onclick="addText()">Adicionar Texto</button>
+      </form>
+      <div id="textCards"></div>
+    </div>
+    <script>
+      function addText() {
+        var textInput = document.getElementById("textInput").value.trim();
 
-      <label for="salarioInformado">Salário Bruto:</label>
-      <input type="number" id="salarioInformado" />
+        if (textInput !== "") {
+          // Obter textos existentes do localStorage
+          var texts = JSON.parse(localStorage.getItem("texts")) || [];
 
-      <label for="date1">Data de início da folha de pagamento:</label>
-      <input type="date" name="date1" id="date1" />
+          // Adicionar o novo texto ao array
+          texts.push(textInput);
 
-      <label for="date2">Data de término da folha de pagamento:</label>
-      <input type="date" name="date2" id="date2" />
+          // Salvar o array atualizado de textos no localStorage
+          localStorage.setItem("texts", JSON.stringify(texts));
 
-  <input type="button" value="Calcular" onclick="calcular()">
-    </form>
-    <br>
+          // Atualizar a interface do usuário
+          updateUI();
+
+          // Limpar o campo de entrada
+          document.getElementById("textInput").value = "";
+        }
+      }
+
+      function copyToClipboard(text) {
+        var textarea = document.createElement("textarea");
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+
+        alert("Texto copiado para a área de transferência!");
+      }
+
+      function deleteText(index) {
+        var texts = JSON.parse(localStorage.getItem("texts")) || [];
+
+        // Remover o texto na posição index
+        texts.splice(index, 1);
+
+        // Salvar o array atualizado de textos no localStorage
+        localStorage.setItem("texts", JSON.stringify(texts));
+
+        // Atualizar a interface do usuário
+        updateUI();
+      }
+
+      function updateUI() {
+        var textCards = document.getElementById("textCards");
+        textCards.innerHTML = "";
+
+        // Obter textos do localStorage
+        var texts = JSON.parse(localStorage.getItem("texts")) || [];
+
+        // Criar cards para cada texto e adicioná-los à interface do usuário
+        texts.forEach(function (text, index) {
+          var card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = text;
+
+          var deleteButton = document.createElement("button");
+          deleteButton.innerHTML = "Excluir";
+          deleteButton.onclick = function () {
+            deleteText(index);
+          };
+
+          card.appendChild(deleteButton);
+
+          textCards.appendChild(card);
+        });
+      }
+
+      // Chamar a função de atualização da interface do usuário ao carregar a página
+      window.onload = updateUI;
+    </script>
   </body>
 </html>
